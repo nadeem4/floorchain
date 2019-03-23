@@ -1,0 +1,828 @@
+{
+    "ApplicationName": "LenderAgreementContract6",
+    "DisplayName": "Floorchain 2.0",
+    "Description": "",
+    "ApplicationRoles": [
+      {
+        "Name": "Lender",
+        "Description": "Lender"
+      },
+      {
+        "Name": "Dealer",
+        "Description": "Dealer"
+      },
+      {
+          "Name": "Vehicle",
+          "Description": "Vehicle"
+      }
+    ],
+    "Workflows": [
+        {
+            "Name": "LenderAgreementContract6",
+            "DisplayName": "Lender Agreement",
+            "Description": "",
+            "Initiators": [ "Lender" ],
+            "StartState": "Initiated",
+            "Properties" : [
+                {
+                    "Name": "lender",
+                    "DisplayName": "Lender",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "Lender"
+                    }
+                },
+                {
+                    "Name": "State",
+                    "DisplayName": "State",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "state"
+                    }
+                },
+                {
+                    "Name": "daysToPay",
+                    "DisplayName": "Days to pay loan",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "int"
+                    }
+                },
+                {
+                    "Name" : "geographicalLimitConstraint",
+                    "DisplayName": "Vehicle Distance Constraint (in miles)",
+                    "Description" : "Geographical Limit beyond which dealer can't take the car",
+                    "Type": {
+                        "Name" : "int"
+                    }
+                },
+                {
+                    "Name": "maxMoney",
+                    "DisplayName": "Maximum Credit",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "int"
+                    }
+                },
+                {
+                    "Name": "agreementDuration",
+                    "DisplayName": "Agreement Duration",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "int"
+                    }
+                },
+                {
+                    "Name": "mileageLimit",
+                    "DisplayName": "Mileage Limit (in miles)",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "int"
+                    }
+                }
+            ],
+            "Constructor" : {
+                "Parameters" : [
+                    {
+                        "Name": "_daysToPay",
+                        "DisplayName": "Days to pay loan",
+                        "Description" : "",
+                        "Type": {
+                            "Name" : "int"
+                        }
+                    },
+                    {
+                        "Name" : "_geographicalLimitConstraint",
+                        "DisplayName": "Vehicle Distance Constraint (in miles)",
+                        "Description" : "Geographical Limit beyond which dealer can't take the car",
+                        "Type": {
+                            "Name" : "int"
+                        }
+                    },
+                    {
+                        "Name": "_maxMoney",
+                        "DisplayName": "Maximum Credit",
+                        "Description" : "",
+                        "Type": {
+                            "Name" : "int"
+                        }
+                    },
+                    {
+                        "Name": "_agreementDuration",
+                        "DisplayName": "Agreement Duration",
+                        "Description" : "",
+                        "Type": {
+                            "Name" : "int"
+                        }
+                    },
+                    {
+                        "Name": "_mileageLimit",
+                        "DisplayName": "Mileage Limit (in miles)",
+                        "Description" : "",
+                        "Type": {
+                            "Name" : "int"
+                        }
+                    }
+                ]
+            },
+            "Functions" : [
+                {
+                    "Name" : "active",
+                    "DisplayName" : "Activate",
+                    "Description" : "",
+                    "Parameters": []
+                },
+                {
+                    "Name" : "close",
+                    "DisplayName" : "Close",
+                    "Description" : "",
+                    "Parameters": []
+                },
+                {
+                    "Name" : "renew",
+                    "DisplayName" : "Renew",
+                    "Description" : "",
+                    "Parameters": [
+                        {
+                            "Name": "_daysToPay",
+                            "DisplayName": "Days to pay loan",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "int"
+                            }
+                        },
+                        {
+                            "Name" : "_geographicalLimitConstraint",
+                            "DisplayName": "Vehicle Distance Constraint (in miles)",
+                            "Description" : "Geographical Limit beyond which dealer can't take the car",
+                            "Type": {
+                                "Name" : "int"
+                            }
+                        },
+                        {
+                            "Name": "_maxMoney",
+                            "DisplayName": "Total Money",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "int"
+                            }
+                        },
+                        {
+                            "Name": "_agreementDuration",
+                            "DisplayName": "Agreement Duration",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "int"
+                            }
+                        },
+                        {
+                            "Name": "_mileageLimit",
+                            "DisplayName": "Mileage Limit (in miles)",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "int"
+                            }
+                        }
+                    ]
+                }
+
+            ],
+            "States": [
+                {
+                    "Name": "Initiated",
+                    "DisplayName": "Initiated",
+                    "Description": "",
+                    "PercentComplete": 10,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [],
+                            "AllowedInstanceRoles": [ "lender" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "active",
+                            "NextStates": [ "Active" ],
+                            "DisplayName": "Active"
+                        }
+                    ]
+                },
+                {
+                    "Name": "Active",
+                    "DisplayName": "Active",
+                    "Description": "",
+                    "PercentComplete": 30,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "lender" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "close",
+                            "NextStates": [ "Closed" ],
+                            "DisplayName": "Closed"
+                        }
+                    ]
+                },
+                {
+                    "Name": "Closed",
+                    "DisplayName": "Closed",
+                    "Description": "",
+                    "PercentComplete": 100,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "lender" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "renew",
+                            "NextStates": [ "Renewed" ],
+                            "DisplayName": "Renewed"
+                        }
+                    ]
+                },
+                {
+                    "Name": "Renewed",
+                    "DisplayName": "Renewed",
+                    "Description": "",
+                    "PercentComplete": 10,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "lender" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "active",
+                            "NextStates": [ "Active" ],
+                            "DisplayName": "Active"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "VehicleStateContract6",
+            "DisplayName": "Vehicle State",
+            "Description": "",
+            "Initiators": [ "Dealer" ],
+            "StartState": "InTransit",
+            "Properties":[
+                {
+                    "Name": "geographicalLimitConstraint",
+                    "DisplayName": "Vehicle Distance Constraint (in miles)",
+                    "Description": "",
+                    "Type": {
+                        "Name": "int"
+                    }
+                },
+                {
+                    "Name": "mileageLimit",
+                    "DisplayName": "Mileage Limit",
+                    "Description": "",
+                    "Type": {
+                        "Name": "int"
+                    }
+                },
+                {
+                    "Name": "lender",
+                    "DisplayName": "Lender",
+                    "Description": "",
+                    "Type": {
+                        "Name": "Lender"
+                    }
+                },
+                {
+                    "Name": "dealer",
+                    "DisplayName": "Dealer",
+                    "Description": "",
+                    "Type": {
+                        "Name": "Dealer"
+                    }
+                },
+                {
+                    "Name": "vehicle",
+                    "DisplayName": "Vehicle",
+                    "Description": "",
+                    "Type": {
+                        "Name": "Vehicle"
+                    }
+                },
+                {
+                    "Name": "State",
+                    "DisplayName": "State",
+                    "Description": "",
+                    "Type": {
+                        "Name": "state"
+                    }
+                },
+                {
+                    "Name": "dealerLocation",
+                    "DisplayName": "Dealership Location",
+                    "Description": "",
+                    "Type": {
+                        "Name": "string"
+                    }
+                },
+                {
+                    "Name": "vehicleType",
+                    "DisplayName": "Vehicle Type",
+                    "Description": "",
+                    "Type": {
+                        "Name": "enum",
+                        "EnumValues" : ["Used", "New"]
+                    }
+                },
+                {
+                        "Name": "vin",
+                        "DisplayName":"Vehicle Indentification Number",
+                        "Description": "",
+                        "Type": {
+                            "Name": "string"
+                        }
+                }
+                
+            ],
+            "Constructor": {
+                "Parameters": [
+                    {
+                        "Name": "_geographicalLimitConstraint",
+                        "DisplayName": "Vehicle Distance Constraint (in miles)",
+                        "Description": "",
+                        "Type": {
+                            "Name": "int"
+                        }
+                    },
+                    {
+                        "Name": "_mileageLimit",
+                        "DisplayName": "Mileage Limit (in miles)",
+                        "Description": "",
+                        "Type": {
+                            "Name": "int"
+                        }
+                    },
+                    {
+                        "Name": "_lender",
+                        "DisplayName": "Lender",
+                        "Description": "",
+                        "Type": {
+                            "Name": "Lender"
+                        }
+                    },
+                    {
+                        "Name": "_vehicle",
+                        "DisplayName": "Vehicle",
+                        "Description": "",
+                        "Type": {
+                            "Name": "Vehicle"
+                        }
+                    },
+                    {
+                        "Name": "_vin",
+                        "DisplayName":"Vehicle Indentification Number",
+                        "Description": "",
+                        "Type": {
+                            "Name": "string"
+                        }
+                    },
+                    {
+                        "Name": "_dealerLocation",
+                        "DisplayName": "Dealership Location",
+                        "Description": "",
+                        "Type": {
+                            "Name": "string"
+                        }
+                    }
+                ]
+            },
+            "Functions": [
+                {
+                    "Name": "createInventory",
+                    "DisplayName": "Receive Vehicle",
+                    "Description": "",
+                    "Parameters": []
+                },
+                {
+                    "Name": "checkInInventory",
+                    "DisplayName": "Check Vehicle Status",
+                    "Description": "",
+                    "Parameters": [
+                        {
+                            "Name": "_vehicleDistance",
+                            "DisplayName": "Vehicle distance (in miles)",
+                            "Description": "",
+                            "Type": {
+                                "Name": "int"
+                            }
+                        },
+                        {
+                            "Name": "_mileage",
+                            "DisplayName": "Mileage (in miles)",
+                            "Description": "",
+                            "Type": {
+                                "Name": "int"
+                            }
+                        },
+                        {
+                            "Name": "_dataPackageJson",
+                            "DisplayName": "Data Package",
+                            "Description": "",
+                            "Type": {
+                                "Name": "string"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Name": "sell",
+                    "DisplayName": "Sell Vehicle",
+                    "Description": "",
+                    "Parameters": [
+                        {
+                            "Name": "_vehicleType",
+                            "DisplayName": "Vehicle Type",
+                            "Description": "",
+                            "Type": {
+                                "Name": "enum",
+                                 "EnumValues" : ["Used", "New"]
+                            }
+                        },
+                        {
+                            "Name": "_mileage",
+                            "DisplayName": "Mileage (in miles)",
+                            "Description": "",
+                            "Type": {
+                                "Name": "int"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Name": "fund",
+                    "DisplayName": "Vehicle funded",
+                    "Description": "",
+                    "Parameters": []
+                },
+                {
+                    "Name": "payOff",
+                    "DisplayName": "Vehicle Paid",
+                    "Description": "",
+                    "Parameters": []
+                },
+                {
+                    "Name": "receivePayment",
+                    "DisplayName": "Payment Received",
+                    "Description": "",
+                    "Parameters": []
+                }
+
+            ],
+            "States": [
+                {
+                    "Name":"InTransit",
+                    "DisplayName":"In Transit",
+                    "Description": "",
+                    "PercentComplete": 10,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "dealer" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "createInventory",
+                            "NextStates": [ "InInventory" ],
+                            "DisplayName": "In-Inventory"
+                        }
+                    ]
+                },
+                {
+                    "Name":"InInventory",
+                    "DisplayName":"In-Inventory",
+                    "Description": "",
+                    "PercentComplete": 30,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "dealer" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "sell",
+                            "NextStates": [ "Sold" ],
+                            "DisplayName": "sold"
+                        },
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "checkInInventory",
+                            "NextStates": [ "CheckInInventory" ],
+                            "DisplayName": "In-Inventory"
+                        }
+                    ]
+                },
+                {
+                    "Name":"CheckInInventory",
+                    "DisplayName":"In-Inventory",
+                    "Description": "",
+                    "PercentComplete": 50,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "dealer" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "sell",
+                            "NextStates": [ "Sold" ],
+                            "DisplayName": "sold"
+                        },
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "checkInInventory",
+                            "NextStates": [ "CheckInInventory" ],
+                            "DisplayName": "In-Inventory"
+                        }
+                    ]
+                },
+                {
+                    "Name":"Sold",
+                    "DisplayName":"Sold",
+                    "Description": "",
+                    "PercentComplete": 70,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "dealer" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "fund",
+                            "NextStates": [ "Funded" ],
+                            "DisplayName": "Funded"
+                        }
+                    ]
+                },
+                {
+                    "Name":"Funded",
+                    "DisplayName":"Funded",
+                    "Description": "",
+                    "PercentComplete": 80,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "dealer" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "payOff",
+                            "NextStates": [ "PaidOff" ],
+                            "DisplayName": "Paid Off"
+                        }
+                    ]
+                },
+                {
+                    "Name":"PaidOff",
+                    "DisplayName":"Paid Off",
+                    "Description": "",
+                    "PercentComplete": 90,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "lender" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "receivePayment",
+                            "NextStates": [ "PaymentReceived" ],
+                            "DisplayName": "Received Payment"
+                        }
+                    ]
+                },
+                {
+                    "Name":"PaymentReceived",
+                    "DisplayName":"Received Payment",
+                    "Description": "",
+                    "PercentComplete": 100,
+                    "Style": "Success",
+                    "Transitions": [
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "VehicleInInventoryStateContract6",
+            "DisplayName": "Vehicle Inventory State",
+            "Description": "",
+            "Initiators": [  ],
+            "StartState": "In",
+            "Properties":[
+                {
+                    "Name": "State",
+                    "DisplayName": "State",
+                    "Description": "Hold the state of contract",
+                    "Type": {
+                        "Name": "state"
+                    }
+                },
+                {
+                    "Name": "dealer",
+                    "DisplayName": "Dealer",
+                    "Description": "",
+                    "Type": {
+                        "Name": "Dealer"
+                    }
+                },
+                {
+                    "Name": "vehicle",
+                    "DisplayName": "Vehicle",
+                    "Description": "",
+                    "Type": {
+                        "Name": "Vehicle"
+                    }
+                }
+                
+            ],
+            "Constructor": {
+                "Parameters": [
+                    {
+                        "Name": "_dealer",
+                        "DisplayName": "Dealer",
+                        "Description": "",
+                        "Type": {
+                            "Name": "Dealer"
+                        }
+                    },
+                    {
+                        "Name": "_vehicle",
+                        "DisplayName": "Vehicle",
+                        "Description": "",
+                        "Type": {
+                            "Name": "Vehicle"
+                        }
+                    },
+                    {
+                        "Name": "_dataPackageJson",
+                        "DisplayName": "Data Package",
+                        "Description": "",
+                        "Type": {
+                            "Name": "string"
+                        }
+                    }
+                ]
+            },
+            "Functions": [
+                {
+                    "Name": "vehicleIn",
+                    "DisplayName": "In",
+                    "Description": "",
+                    "Parameters": [
+                        {
+                            "Name": "_vehicle",
+                            "DisplayName": "Vehicle",
+                            "Description": "",
+                            "Type": {
+                                "Name": "Vehicle"
+                            }
+                        },
+                        {
+                            "Name": "_mileage",
+                            "DisplayName": "Mileage (in miles)",
+                            "Description": "",
+                            "Type": {
+                                "Name": "int"
+                            }
+                        },
+                        {
+                            "Name": "_dataPackageJson",
+                            "DisplayName": "Data Package",
+                            "Description": "",
+                            "Type": {
+                                "Name": "string"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Name": "vehicleOut",
+                    "DisplayName": "Out",
+                    "Description": "",
+                    "Parameters": [
+                        {
+                            "Name": "_vehicle",
+                            "DisplayName": "Vehicle",
+                            "Description": "",
+                            "Type": {
+                                "Name": "Vehicle"
+                            }
+                        },
+                        {
+                            "Name": "_mileage",
+                            "DisplayName": "Mileage (in miles)",
+                            "Description": "",
+                            "Type": {
+                                "Name": "int"
+                            }
+                        },
+                        {
+                            "Name": "_dataPackageJson",
+                            "DisplayName": "Data Package",
+                            "Description": "",
+                            "Type": {
+                                "Name": "string"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Name": "close",
+                    "DisplayName": "Close",
+                    "Description": "",
+                    "Parameters": [
+                        {
+                            "Name": "_dealer",
+                            "DisplayName": "Dealer",
+                            "Description": "",
+                            "Type": {
+                                "Name": "Dealer"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "States": [
+                {
+                    "Name":"In",
+                    "DisplayName":"In",
+                    "Description": "",
+                    "PercentComplete": 10,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "vehicleOut",
+                            "NextStates": [ "Out" ],
+                            "DisplayName": "Out"
+                        },
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "vehicleIn",
+                            "NextStates": [ "In" ],
+                            "DisplayName": "In"
+                        },
+                        {
+                            
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "dealer" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "close",
+                            "NextStates": [ "Closed" ],
+                            "DisplayName": "Closed"
+                        }
+                    ]
+                },
+                {
+                     "Name":"Out",
+                    "DisplayName":"Out",
+                    "Description": "",
+                    "PercentComplete": 50,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "vehicleOut",
+                            "NextStates": [ "Out" ],
+                            "DisplayName": "Out"
+                        },
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "vehicleIn",
+                            "NextStates": [ "In" ],
+                            "DisplayName": "In"
+                        },
+                        {
+                            
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "dealer" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "close",
+                            "NextStates": [ "Closed" ],
+                            "DisplayName": "Closed"
+                        }
+                    ]
+                },
+                {
+                    
+                    "Name":"Closed",
+                    "DisplayName":"Closed",
+                    "Description": "",
+                    "PercentComplete": 100,
+                    "Style": "Success",
+                    "Transitions": []
+                }
+            ]
+        }
+    ]
+}
