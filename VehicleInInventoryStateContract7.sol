@@ -1,12 +1,13 @@
 pragma solidity ^0.4.25;
 
 
-contract VehicleInInventoryStateContract6 {
+contract VehicleInInventoryStateContract7 {
     
     address public vehicle;
     address public dealer;
     uint public mileage;
     string public dataPackageJson;
+    string public vin;
 
     
     enum StateType {
@@ -26,8 +27,9 @@ contract VehicleInInventoryStateContract6 {
         _;
     }
     
-    constructor(address _dealer, address _vehicle, string _dataPackageJson) public {
+    constructor(address _dealer, address _vehicle, string _vin, string _dataPackageJson) public {
         dealer = _dealer;
+        vin = _vin;
         dataPackageJson = _dataPackageJson;
         vehicle = _vehicle;
         State = StateType.In;

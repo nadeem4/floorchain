@@ -1,21 +1,30 @@
 pragma solidity ^0.4.25;
 
-import './VehicleInInventoryStateContract6.sol';
+import './VehicleInInventoryStateContract7.sol';
 
-contract VehicleStateContract6 {
+contract VehicleStateContract7 {
     
-    VehicleInInventoryStateContract6 vehicleInInventoryStateContract;
+    VehicleInInventoryStateContract7 vehicleInInventoryStateContract;
 
     uint public mileage;
     uint public mileageLimit;
     uint public geographicalLimitConstraint;
+    uint public invoiceDate;
+    uint public amount;
 
     address public lender;
     address public dealer;
     address public vehicle;
+    
+    address public lenderAgreement;
 
     string public vin;
     string public dealerLocation;
+    string public invoiceNumber;
+    string public oemName;
+    string public description;
+    string public dealerNumber;
+    string public groupNumber;
 
     enum StateType {
         InTransit,
@@ -51,21 +60,44 @@ contract VehicleStateContract6 {
 
 
 
-    constructor(uint _geographicalLimitConstraint, uint _mileageLimit, address _lender, address _vehicle, string _vin, string _dealerLocation ) public {
-        dealer = msg.sender;
-        geographicalLimitConstraint = _geographicalLimitConstraint;
-        mileageLimit = _mileageLimit;
-        lender = _lender;
-        vehicle = _vehicle;
-        vin = _vin;
-        dealerLocation = _dealerLocation;
-        State = StateType.InTransit;
+    constructor() public {
+            State = StateType.InTransit;
     }
 
 
+    function setRoles( address _lender, address _dealer, address _vehicle) public  {
+        dealer = _dealer;
+        lender = _lender;
+        vehicle = _vehicle;
+    }
+
+    function setDealerInfo(string _dealerNumber, string _groupNumber, string _dealerLocation ) public  {
+        dealerNumber = _dealerNumber;
+        groupNumber = _groupNumber;
+        dealerLocation = _dealerLocation;
+    }
+
+    function setVehicleInfo( string _vin, string _oemName) public   {
+        vin = _vin;
+        oemName = _oemName;
+    }
+
+    function setLenderAgreementDetails (address _lenderAgreement, uint _geographicalLimitConstraint, uint _mileageLimit) public  {
+        lenderAgreement = _lenderAgreement;
+        geographicalLimitConstraint = _geographicalLimitConstraint;
+        mileageLimit = _mileageLimit;
+    }
+
+    function setInvoiceDetails(string _invoiceNumber, uint _invoiceDate, string _description, uint _amount) public {
+        invoiceNumber = _invoiceNumber;
+        invoiceDate = _invoiceDate;
+        description = _description;
+        amount = _amount;
+    }
+
     function createInventory() public onlyDealer{
         State = StateType.InInventory;
-        vehicleInInventoryStateContract = new VehicleInInventoryStateContract6( dealer, vehicle, '');
+        vehicleInInventoryStateContract = new VehicleInInventoryStateContract7( dealer, vehicle, vin, '');
     }
 
     function checkInInventory(uint _vehicleDistance, uint _mileage,  string _dataPackageJson) public onlyVehicle {

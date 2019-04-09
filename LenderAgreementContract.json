@@ -1,5 +1,5 @@
 {
-    "ApplicationName": "LenderAgreementContract6",
+    "ApplicationName": "LenderAgreementContract7",
     "DisplayName": "Floorchain 2.0",
     "Description": "",
     "ApplicationRoles": [
@@ -18,12 +18,28 @@
     ],
     "Workflows": [
         {
-            "Name": "LenderAgreementContract6",
+            "Name": "LenderAgreementContract7",
             "DisplayName": "Lender Agreement",
             "Description": "",
             "Initiators": [ "Lender" ],
             "StartState": "Initiated",
             "Properties" : [
+                {
+                    "Name": "name",
+                    "DisplayName": "Name",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "string"
+                    }
+                },
+                {
+                    "Name": "description",
+                    "DisplayName": "Description",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "string"
+                    }
+                },
                 {
                     "Name": "lender",
                     "DisplayName": "Lender",
@@ -79,10 +95,34 @@
                     "Type": {
                         "Name" : "int"
                     }
+                },
+                {
+                    "Name": "vehicleAttachedCount",
+                    "DisplayName": "Number of vehicle attached",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "int"
+                    }
                 }
             ],
             "Constructor" : {
                 "Parameters" : [
+                    {
+                        "Name": "_name",
+                        "DisplayName": "Name",
+                        "Description" : "",
+                        "Type": {
+                            "Name" : "string"
+                        }
+                    },
+                    {
+                        "Name": "_description",
+                        "DisplayName": "Description",
+                        "Description" : "",
+                        "Type": {
+                            "Name" : "string"
+                        }
+                    },
                     {
                         "Name": "_daysToPay",
                         "DisplayName": "Days to pay loan",
@@ -131,6 +171,94 @@
                     "DisplayName" : "Activate",
                     "Description" : "",
                     "Parameters": []
+                },
+                {
+                    "Name" : "uploadInvoice",
+                    "DisplayName" : "Upload Invoice",
+                    "Description" : "",
+                    "Parameters": [
+                        {
+                            "Name": "_invoiceNumber",
+                            "DisplayName": "Invoice Number",
+                            "Description" : "Invoice Number",
+                            "Type": {
+                                "Name" : "string"
+                            }
+                        },
+                        {
+                            "Name": "_invoiceDate",
+                            "DisplayName": "Invoice Date",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "int"
+                            }
+                        },
+                        {
+                            "Name": "_desccription",
+                            "DisplayName": "Description",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "string"
+                            }
+                        },
+                        {
+                            "Name": "_amount",
+                            "DisplayName": "Amount",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "int"
+                            }
+                        },
+                        {
+                            "Name": "_vin",
+                            "DisplayName": "Vehicle Identification Number (VIN)",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "string"
+                            }
+                        },
+                        {
+                            "Name": "_oemName",
+                            "DisplayName": "OEM Name",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "string"
+                            }
+                        },
+                        {
+                            "Name": "_dealerNumber",
+                            "DisplayName": "Dealer Number",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "string"
+                            }
+                        },
+                        {
+                            "Name": "_groupNumber",
+                            "DisplayName": "Group Number",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "string"
+                            }
+                        },
+                        {
+                            "Name": "_dealerLocation",
+                            "DisplayName": "Dealer Location",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "string"
+                            }
+                        },
+                        {
+                            "Name": "_vehicle",
+                            "DisplayName": "Vehicle User",
+                            "Description" : "",
+                            "Type": {
+                                "Name" : "Vehicle"
+                            }
+                        }
+
+                    ]
                 },
                 {
                     "Name" : "close",
@@ -219,6 +347,39 @@
                             "Function": "close",
                             "NextStates": [ "Closed" ],
                             "DisplayName": "Closed"
+                        },
+                        {
+                            "AllowedRoles": ["Dealer"  ],
+                            "AllowedInstanceRoles": [ ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "uploadInvoice",
+                            "NextStates": [ "InvoiceUploaded" ],
+                            "DisplayName": "Invoice Uploaded"
+                        }
+                    ]
+                },
+                {
+                    "Name": "InvoiceUploaded",
+                    "DisplayName": "Invoice Uploaded",
+                    "Description": "",
+                    "PercentComplete": 40,
+                    "Style": "Success",
+                    "Transitions": [
+                        {
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "lender" ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "close",
+                            "NextStates": [ "Closed" ],
+                            "DisplayName": "Closed"
+                        },
+                        {
+                            "AllowedRoles": ["Dealer"  ],
+                            "AllowedInstanceRoles": [ ],
+                            "Description": "Modify attributes of this contract.",
+                            "Function": "uploadInvoice",
+                            "NextStates": [ "InvoiceUploaded" ],
+                            "DisplayName": "Invoice Uploaded"
                         }
                     ]
                 },
@@ -259,7 +420,7 @@
             ]
         },
         {
-            "Name": "VehicleStateContract6",
+            "Name": "VehicleStateContract7",
             "DisplayName": "Vehicle State",
             "Description": "",
             "Initiators": [ "Dealer" ],
@@ -337,59 +498,19 @@
                         "Type": {
                             "Name": "string"
                         }
+                },
+                {
+                        "Name": "lenderAgreement",
+                        "DisplayName":"Lender Agreement",
+                        "Description": "",
+                        "Type": {
+                            "Name": "address"
+                        }
                 }
                 
             ],
             "Constructor": {
                 "Parameters": [
-                    {
-                        "Name": "_geographicalLimitConstraint",
-                        "DisplayName": "Vehicle Distance Constraint (in miles)",
-                        "Description": "",
-                        "Type": {
-                            "Name": "int"
-                        }
-                    },
-                    {
-                        "Name": "_mileageLimit",
-                        "DisplayName": "Mileage Limit (in miles)",
-                        "Description": "",
-                        "Type": {
-                            "Name": "int"
-                        }
-                    },
-                    {
-                        "Name": "_lender",
-                        "DisplayName": "Lender",
-                        "Description": "",
-                        "Type": {
-                            "Name": "Lender"
-                        }
-                    },
-                    {
-                        "Name": "_vehicle",
-                        "DisplayName": "Vehicle",
-                        "Description": "",
-                        "Type": {
-                            "Name": "Vehicle"
-                        }
-                    },
-                    {
-                        "Name": "_vin",
-                        "DisplayName":"Vehicle Indentification Number",
-                        "Description": "",
-                        "Type": {
-                            "Name": "string"
-                        }
-                    },
-                    {
-                        "Name": "_dealerLocation",
-                        "DisplayName": "Dealership Location",
-                        "Description": "",
-                        "Type": {
-                            "Name": "string"
-                        }
-                    }
                 ]
             },
             "Functions": [
@@ -605,7 +726,7 @@
             ]
         },
         {
-            "Name": "VehicleInInventoryStateContract6",
+            "Name": "VehicleInInventoryStateContract7",
             "DisplayName": "Vehicle Inventory State",
             "Description": "",
             "Initiators": [  ],
@@ -653,6 +774,14 @@
                         "Description": "",
                         "Type": {
                             "Name": "Vehicle"
+                        }
+                    },
+                    {
+                        "Name": "_vin",
+                        "DisplayName": "Vehicle Identification Number(VIN)",
+                        "Description": "",
+                        "Type": {
+                            "Name": "string"
                         }
                     },
                     {
