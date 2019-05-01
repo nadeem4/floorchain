@@ -1,5 +1,5 @@
 {
-    "ApplicationName": "LenderAgreementContract7",
+    "ApplicationName": "LenderAgreementContract8",
     "DisplayName": "Floorchain 2.0",
     "Description": "",
     "ApplicationRoles": [
@@ -18,14 +18,14 @@
     ],
     "Workflows": [
         {
-            "Name": "LenderAgreementContract7",
+            "Name": "LenderAgreementContract8",
             "DisplayName": "Lender Agreement",
             "Description": "",
             "Initiators": [ "Lender" ],
             "StartState": "Initiated",
             "Properties" : [
                 {
-                    "Name": "name",
+                    "Name": "Name",
                     "DisplayName": "Name",
                     "Description" : "",
                     "Type": {
@@ -33,7 +33,7 @@
                     }
                 },
                 {
-                    "Name": "description",
+                    "Name": "Description",
                     "DisplayName": "Description",
                     "Description" : "",
                     "Type": {
@@ -41,7 +41,7 @@
                     }
                 },
                 {
-                    "Name": "lender",
+                    "Name": "Lender",
                     "DisplayName": "Lender",
                     "Description" : "",
                     "Type": {
@@ -57,7 +57,7 @@
                     }
                 },
                 {
-                    "Name": "daysToPay",
+                    "Name": "DaysToPay",
                     "DisplayName": "Days to pay loan",
                     "Description" : "",
                     "Type": {
@@ -65,7 +65,7 @@
                     }
                 },
                 {
-                    "Name" : "geographicalLimitConstraint",
+                    "Name" : "GeographicalLimitConstraint",
                     "DisplayName": "Vehicle Distance Constraint (in miles)",
                     "Description" : "Geographical Limit beyond which dealer can't take the car",
                     "Type": {
@@ -73,7 +73,7 @@
                     }
                 },
                 {
-                    "Name": "maxMoney",
+                    "Name": "MaxMoney",
                     "DisplayName": "Maximum Credit",
                     "Description" : "",
                     "Type": {
@@ -81,7 +81,7 @@
                     }
                 },
                 {
-                    "Name": "agreementDuration",
+                    "Name": "AgreementDuration",
                     "DisplayName": "Agreement Duration",
                     "Description" : "",
                     "Type": {
@@ -89,7 +89,7 @@
                     }
                 },
                 {
-                    "Name": "mileageLimit",
+                    "Name": "MileageLimit",
                     "DisplayName": "Mileage Limit (in miles)",
                     "Description" : "",
                     "Type": {
@@ -97,7 +97,7 @@
                     }
                 },
                 {
-                    "Name": "vehicleAttachedCount",
+                    "Name": "VehicleAttachedCount",
                     "DisplayName": "Number of vehicle attached",
                     "Description" : "",
                     "Type": {
@@ -108,7 +108,7 @@
             "Constructor" : {
                 "Parameters" : [
                     {
-                        "Name": "_name",
+                        "Name": "name",
                         "DisplayName": "Name",
                         "Description" : "",
                         "Type": {
@@ -116,7 +116,7 @@
                         }
                     },
                     {
-                        "Name": "_description",
+                        "Name": "description",
                         "DisplayName": "Description",
                         "Description" : "",
                         "Type": {
@@ -124,7 +124,7 @@
                         }
                     },
                     {
-                        "Name": "_daysToPay",
+                        "Name": "daysToPay",
                         "DisplayName": "Days to pay loan",
                         "Description" : "",
                         "Type": {
@@ -132,7 +132,7 @@
                         }
                     },
                     {
-                        "Name" : "_geographicalLimitConstraint",
+                        "Name" : "geographicalLimitConstraint",
                         "DisplayName": "Vehicle Distance Constraint (in miles)",
                         "Description" : "Geographical Limit beyond which dealer can't take the car",
                         "Type": {
@@ -140,7 +140,7 @@
                         }
                     },
                     {
-                        "Name": "_maxMoney",
+                        "Name": "maxMoney",
                         "DisplayName": "Maximum Credit",
                         "Description" : "",
                         "Type": {
@@ -148,7 +148,7 @@
                         }
                     },
                     {
-                        "Name": "_agreementDuration",
+                        "Name": "agreementDuration",
                         "DisplayName": "Agreement Duration",
                         "Description" : "",
                         "Type": {
@@ -156,7 +156,7 @@
                         }
                     },
                     {
-                        "Name": "_mileageLimit",
+                        "Name": "mileageLimit",
                         "DisplayName": "Mileage Limit (in miles)",
                         "Description" : "",
                         "Type": {
@@ -178,7 +178,7 @@
                     "Description" : "",
                     "Parameters": [
                         {
-                            "Name": "_invoiceNumber",
+                            "Name": "invoiceNumber",
                             "DisplayName": "Invoice Number",
                             "Description" : "Invoice Number",
                             "Type": {
@@ -186,7 +186,7 @@
                             }
                         },
                         {
-                            "Name": "_invoiceDate",
+                            "Name": "invoiceDate",
                             "DisplayName": "Invoice Date",
                             "Description" : "",
                             "Type": {
@@ -194,7 +194,7 @@
                             }
                         },
                         {
-                            "Name": "_desccription",
+                            "Name": "desccription",
                             "DisplayName": "Description",
                             "Description" : "",
                             "Type": {
@@ -202,7 +202,7 @@
                             }
                         },
                         {
-                            "Name": "_amount",
+                            "Name": "amount",
                             "DisplayName": "Amount",
                             "Description" : "",
                             "Type": {
@@ -210,7 +210,7 @@
                             }
                         },
                         {
-                            "Name": "_vin",
+                            "Name": "vin",
                             "DisplayName": "Vehicle Identification Number (VIN)",
                             "Description" : "",
                             "Type": {
@@ -218,7 +218,7 @@
                             }
                         },
                         {
-                            "Name": "_oemName",
+                            "Name": "oemName",
                             "DisplayName": "OEM Name",
                             "Description" : "",
                             "Type": {
@@ -226,7 +226,7 @@
                             }
                         },
                         {
-                            "Name": "_dealerNumber",
+                            "Name": "dealerNumber",
                             "DisplayName": "Dealer Number",
                             "Description" : "",
                             "Type": {
@@ -234,27 +234,11 @@
                             }
                         },
                         {
-                            "Name": "_groupNumber",
-                            "DisplayName": "Group Number",
+                            "Name": "dealer",
+                            "DisplayName": "Dealer",
                             "Description" : "",
                             "Type": {
-                                "Name" : "string"
-                            }
-                        },
-                        {
-                            "Name": "_dealerLocation",
-                            "DisplayName": "Dealer Location",
-                            "Description" : "",
-                            "Type": {
-                                "Name" : "string"
-                            }
-                        },
-                        {
-                            "Name": "_vehicle",
-                            "DisplayName": "Vehicle User",
-                            "Description" : "",
-                            "Type": {
-                                "Name" : "Vehicle"
+                                "Name" : "Dealer"
                             }
                         }
 
@@ -272,7 +256,7 @@
                     "Description" : "",
                     "Parameters": [
                         {
-                            "Name": "_daysToPay",
+                            "Name": "daysToPay",
                             "DisplayName": "Days to pay loan",
                             "Description" : "",
                             "Type": {
@@ -280,7 +264,7 @@
                             }
                         },
                         {
-                            "Name" : "_geographicalLimitConstraint",
+                            "Name" : "geographicalLimitConstraint",
                             "DisplayName": "Vehicle Distance Constraint (in miles)",
                             "Description" : "Geographical Limit beyond which dealer can't take the car",
                             "Type": {
@@ -288,7 +272,7 @@
                             }
                         },
                         {
-                            "Name": "_maxMoney",
+                            "Name": "maxMoney",
                             "DisplayName": "Total Money",
                             "Description" : "",
                             "Type": {
@@ -296,7 +280,7 @@
                             }
                         },
                         {
-                            "Name": "_agreementDuration",
+                            "Name": "agreementDuration",
                             "DisplayName": "Agreement Duration",
                             "Description" : "",
                             "Type": {
@@ -304,7 +288,7 @@
                             }
                         },
                         {
-                            "Name": "_mileageLimit",
+                            "Name": "mileageLimit",
                             "DisplayName": "Mileage Limit (in miles)",
                             "Description" : "",
                             "Type": {
@@ -325,7 +309,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [],
-                            "AllowedInstanceRoles": [ "lender" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "active",
                             "NextStates": [ "Active" ],
@@ -342,14 +326,14 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "lender" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "close",
                             "NextStates": [ "Closed" ],
                             "DisplayName": "Closed"
                         },
                         {
-                            "AllowedRoles": ["Dealer"  ],
+                            "AllowedRoles": ["Lender"],
                             "AllowedInstanceRoles": [ ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "uploadInvoice",
@@ -367,14 +351,14 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "lender" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "close",
                             "NextStates": [ "Closed" ],
                             "DisplayName": "Closed"
                         },
                         {
-                            "AllowedRoles": ["Dealer"  ],
+                            "AllowedRoles": ["Lender"  ],
                             "AllowedInstanceRoles": [ ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "uploadInvoice",
@@ -392,7 +376,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "lender" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "renew",
                             "NextStates": [ "Renewed" ],
@@ -409,7 +393,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "lender" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "active",
                             "NextStates": [ "Active" ],
@@ -420,14 +404,14 @@
             ]
         },
         {
-            "Name": "VehicleStateContract7",
+            "Name": "VehicleStateContract8",
             "DisplayName": "Vehicle State",
             "Description": "",
-            "Initiators": [ "Dealer" ],
+            "Initiators": [ ],
             "StartState": "InTransit",
             "Properties":[
                 {
-                    "Name": "geographicalLimitConstraint",
+                    "Name": "GeographicalLimitConstraint",
                     "DisplayName": "Vehicle Distance Constraint (in miles)",
                     "Description": "",
                     "Type": {
@@ -435,7 +419,7 @@
                     }
                 },
                 {
-                    "Name": "mileageLimit",
+                    "Name": "MileageLimit",
                     "DisplayName": "Mileage Limit",
                     "Description": "",
                     "Type": {
@@ -443,7 +427,7 @@
                     }
                 },
                 {
-                    "Name": "lender",
+                    "Name": "Lender",
                     "DisplayName": "Lender",
                     "Description": "",
                     "Type": {
@@ -451,19 +435,11 @@
                     }
                 },
                 {
-                    "Name": "dealer",
+                    "Name": "Dealer",
                     "DisplayName": "Dealer",
                     "Description": "",
                     "Type": {
                         "Name": "Dealer"
-                    }
-                },
-                {
-                    "Name": "vehicle",
-                    "DisplayName": "Vehicle",
-                    "Description": "",
-                    "Type": {
-                        "Name": "Vehicle"
                     }
                 },
                 {
@@ -475,37 +451,20 @@
                     }
                 },
                 {
-                    "Name": "dealerLocation",
-                    "DisplayName": "Dealership Location",
+                    "Name": "Vin",
+                    "DisplayName":"Vehicle Indentification Number",
                     "Description": "",
                     "Type": {
                         "Name": "string"
                     }
                 },
                 {
-                    "Name": "vehicleType",
-                    "DisplayName": "Vehicle Type",
+                    "Name": "LenderAgreement",
+                    "DisplayName":"Lender Agreement",
                     "Description": "",
                     "Type": {
-                        "Name": "enum",
-                        "EnumValues" : ["Used", "New"]
+                        "Name": "address"
                     }
-                },
-                {
-                        "Name": "vin",
-                        "DisplayName":"Vehicle Indentification Number",
-                        "Description": "",
-                        "Type": {
-                            "Name": "string"
-                        }
-                },
-                {
-                        "Name": "lenderAgreement",
-                        "DisplayName":"Lender Agreement",
-                        "Description": "",
-                        "Type": {
-                            "Name": "address"
-                        }
                 }
                 
             ],
@@ -526,7 +485,7 @@
                     "Description": "",
                     "Parameters": [
                         {
-                            "Name": "_vehicleDistance",
+                            "Name": "vehicleDistance",
                             "DisplayName": "Vehicle distance (in miles)",
                             "Description": "",
                             "Type": {
@@ -534,7 +493,7 @@
                             }
                         },
                         {
-                            "Name": "_mileage",
+                            "Name": "mileage",
                             "DisplayName": "Mileage (in miles)",
                             "Description": "",
                             "Type": {
@@ -542,8 +501,8 @@
                             }
                         },
                         {
-                            "Name": "_dataPackageJson",
-                            "DisplayName": "Data Package",
+                            "Name": "vin",
+                            "DisplayName":"Vehicle Indentification Number",
                             "Description": "",
                             "Type": {
                                 "Name": "string"
@@ -557,7 +516,7 @@
                     "Description": "",
                     "Parameters": [
                         {
-                            "Name": "_vehicleType",
+                            "Name": "vehicleType",
                             "DisplayName": "Vehicle Type",
                             "Description": "",
                             "Type": {
@@ -566,7 +525,7 @@
                             }
                         },
                         {
-                            "Name": "_mileage",
+                            "Name": "mileage",
                             "DisplayName": "Mileage (in miles)",
                             "Description": "",
                             "Type": {
@@ -605,7 +564,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "dealer" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "createInventory",
                             "NextStates": [ "InInventory" ],
@@ -622,7 +581,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "dealer" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "sell",
                             "NextStates": [ "Sold" ],
@@ -630,7 +589,7 @@
                         },
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "checkInInventory",
                             "NextStates": [ "CheckInInventory" ],
@@ -647,7 +606,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "dealer" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "sell",
                             "NextStates": [ "Sold" ],
@@ -655,7 +614,7 @@
                         },
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "checkInInventory",
                             "NextStates": [ "CheckInInventory" ],
@@ -672,7 +631,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "dealer" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "fund",
                             "NextStates": [ "Funded" ],
@@ -689,7 +648,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "dealer" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "payOff",
                             "NextStates": [ "PaidOff" ],
@@ -706,7 +665,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "lender" ],
+                            "AllowedInstanceRoles": [ "Lender" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "receivePayment",
                             "NextStates": [ "PaymentReceived" ],
@@ -726,7 +685,7 @@
             ]
         },
         {
-            "Name": "VehicleInInventoryStateContract7",
+            "Name": "VehicleInInventoryStateContract8",
             "DisplayName": "Vehicle Inventory State",
             "Description": "",
             "Initiators": [  ],
@@ -741,7 +700,7 @@
                     }
                 },
                 {
-                    "Name": "dealer",
+                    "Name": "Dealer",
                     "DisplayName": "Dealer",
                     "Description": "",
                     "Type": {
@@ -749,49 +708,17 @@
                     }
                 },
                 {
-                    "Name": "vehicle",
-                    "DisplayName": "Vehicle",
+                    "Name": "Vin",
+                    "DisplayName": "Vehicle Identification Number",
                     "Description": "",
                     "Type": {
-                        "Name": "Vehicle"
+                        "Name": "string"
                     }
                 }
                 
             ],
             "Constructor": {
                 "Parameters": [
-                    {
-                        "Name": "_dealer",
-                        "DisplayName": "Dealer",
-                        "Description": "",
-                        "Type": {
-                            "Name": "Dealer"
-                        }
-                    },
-                    {
-                        "Name": "_vehicle",
-                        "DisplayName": "Vehicle",
-                        "Description": "",
-                        "Type": {
-                            "Name": "Vehicle"
-                        }
-                    },
-                    {
-                        "Name": "_vin",
-                        "DisplayName": "Vehicle Identification Number(VIN)",
-                        "Description": "",
-                        "Type": {
-                            "Name": "string"
-                        }
-                    },
-                    {
-                        "Name": "_dataPackageJson",
-                        "DisplayName": "Data Package",
-                        "Description": "",
-                        "Type": {
-                            "Name": "string"
-                        }
-                    }
                 ]
             },
             "Functions": [
@@ -801,27 +728,19 @@
                     "Description": "",
                     "Parameters": [
                         {
-                            "Name": "_vehicle",
-                            "DisplayName": "Vehicle",
+                            "Name": "vin",
+                            "DisplayName": "Vehicle Identification Number",
                             "Description": "",
                             "Type": {
-                                "Name": "Vehicle"
+                                "Name": "string"
                             }
                         },
                         {
-                            "Name": "_mileage",
+                            "Name": "mileage",
                             "DisplayName": "Mileage (in miles)",
                             "Description": "",
                             "Type": {
                                 "Name": "int"
-                            }
-                        },
-                        {
-                            "Name": "_dataPackageJson",
-                            "DisplayName": "Data Package",
-                            "Description": "",
-                            "Type": {
-                                "Name": "string"
                             }
                         }
                     ]
@@ -832,27 +751,19 @@
                     "Description": "",
                     "Parameters": [
                         {
-                            "Name": "_vehicle",
-                            "DisplayName": "Vehicle",
+                            "Name": "vin",
+                            "DisplayName": "Vehicle Identification Number",
                             "Description": "",
                             "Type": {
-                                "Name": "Vehicle"
+                                "Name": "string"
                             }
                         },
                         {
-                            "Name": "_mileage",
+                            "Name": "mileage",
                             "DisplayName": "Mileage (in miles)",
                             "Description": "",
                             "Type": {
                                 "Name": "int"
-                            }
-                        },
-                        {
-                            "Name": "_dataPackageJson",
-                            "DisplayName": "Data Package",
-                            "Description": "",
-                            "Type": {
-                                "Name": "string"
                             }
                         }
                     ]
@@ -863,7 +774,7 @@
                     "Description": "",
                     "Parameters": [
                         {
-                            "Name": "_dealer",
+                            "Name": "dealer",
                             "DisplayName": "Dealer",
                             "Description": "",
                             "Type": {
@@ -883,7 +794,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "vehicleOut",
                             "NextStates": [ "Out" ],
@@ -891,7 +802,7 @@
                         },
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "vehicleIn",
                             "NextStates": [ "In" ],
@@ -900,7 +811,7 @@
                         {
                             
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "dealer" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "close",
                             "NextStates": [ "Closed" ],
@@ -917,7 +828,7 @@
                     "Transitions": [
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "vehicleOut",
                             "NextStates": [ "Out" ],
@@ -925,7 +836,7 @@
                         },
                         {
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "vehicle" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "vehicleIn",
                             "NextStates": [ "In" ],
@@ -934,7 +845,7 @@
                         {
                             
                             "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "dealer" ],
+                            "AllowedInstanceRoles": [ "Dealer" ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "close",
                             "NextStates": [ "Closed" ],
