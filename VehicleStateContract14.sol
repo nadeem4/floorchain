@@ -1,10 +1,10 @@
 pragma solidity ^0.4.25;
 
-import './VehicleInInventoryStateContract8.sol';
+import './VehicleInInventoryStateContract14.sol';
 
-contract VehicleStateContract8 {
+contract VehicleStateContract14 {
     
-    VehicleInInventoryStateContract8 vehicleInInventoryStateContract;
+    VehicleInInventoryStateContract14 vehicleInInventoryStateContract;
 
     uint public Mileage;
     uint public MileageLimit;
@@ -23,6 +23,12 @@ contract VehicleStateContract8 {
     string public OemName;
     string public Description;
     string public DealerNumber;
+
+    bool public MileageException;
+    bool public OffSiteVehicleException;
+    bool public ConfirmedSalesException;
+
+    mapping (string=>address) dealerIdentityMapping;
 
     enum StateType {
         InTransit,
@@ -70,11 +76,14 @@ contract VehicleStateContract8 {
 
     function setDealerInfo(string dealerNumber) public  {
         DealerNumber = dealerNumber;
+
     }
 
+    
+
     function setVehicleInfo( string vin, string oemName) public   {
-        vin = vin;
-        oemName = oemName;
+        Vin = vin;
+        OemName = oemName;
     }
 
     function setLenderAgreementDetails (address lenderAgreement, uint geographicalLimitConstraint, uint mileageLimit) public  {
@@ -90,19 +99,28 @@ contract VehicleStateContract8 {
         Amount = amount;
     }
 
-    function createInventory() public onlyLender{
+    function createInventory() public {
         State = StateType.InInventory;
-        vehicleInInventoryStateContract = new VehicleInInventoryStateContract8();
+        vehicleInInventoryStateContract = new VehicleInInventoryStateContract14();
         vehicleInInventoryStateContract.setVin(Vin);
         vehicleInInventoryStateContract.setDealer(Dealer);
     }
 
-    function checkInInventory(uint vehicleDistance, uint mileage, string vin) public onlyVehicle(vin) {
-        
+    function checkInInventory(uint vehicleDistance, uint mileage, string vin, uint warrentyActivated) public onlyVehicle(vin) {
+        if(!MileageException && MileageLimit < mileage) {
+            MileageException = true;
+        }
+        if( warrentyActivated == 0 ) {
+            ConfirmedSalesException = false;
+        } else {
+            ConfirmedSalesException = true;
+        }
         if(GeographicalLimitConstraint >= vehicleDistance){
             vehicleInInventoryStateContract.vehicleIn(vin, mileage);
+            OffSiteVehicleException = false;
         } else {
             vehicleInInventoryStateContract.vehicleOut(vin, mileage);
+            OffSiteVehicleException = true;
         }
 
         State = StateType.CheckInInventory;

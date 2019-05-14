@@ -1,5 +1,5 @@
 {
-    "ApplicationName": "LenderAgreementContract8",
+    "ApplicationName": "LenderAgreementContract14",
     "DisplayName": "Floorchain 2.0",
     "Description": "",
     "ApplicationRoles": [
@@ -18,7 +18,7 @@
     ],
     "Workflows": [
         {
-            "Name": "LenderAgreementContract8",
+            "Name": "LenderAgreementContract14",
             "DisplayName": "Lender Agreement",
             "Description": "",
             "Initiators": [ "Lender" ],
@@ -99,6 +99,14 @@
                 {
                     "Name": "VehicleAttachedCount",
                     "DisplayName": "Number of vehicle attached",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "int"
+                    }
+                },
+                {
+                    "Name": "VehicleTotalCost",
+                    "DisplayName": "Vehicle Cost",
                     "Description" : "",
                     "Type": {
                         "Name" : "int"
@@ -404,7 +412,7 @@
             ]
         },
         {
-            "Name": "VehicleStateContract8",
+            "Name": "VehicleStateContract14",
             "DisplayName": "Vehicle State",
             "Description": "",
             "Initiators": [ ],
@@ -459,14 +467,70 @@
                     }
                 },
                 {
+                    "Name": "DealerNumber",
+                    "DisplayName":"Dealer Number",
+                    "Description": "",
+                    "Type": {
+                        "Name": "string"
+                    }
+                },
+                {
+                    "Name": "InvoiceNumber",
+                    "DisplayName":"Invoice Number",
+                    "Description": "",
+                    "Type": {
+                        "Name": "string"
+                    }
+                },
+                {
+                    "Name": "OemName",
+                    "DisplayName":"OEM Name",
+                    "Description": "",
+                    "Type": {
+                        "Name": "string"
+                    }
+                },
+                {
                     "Name": "LenderAgreement",
                     "DisplayName":"Lender Agreement",
                     "Description": "",
                     "Type": {
                         "Name": "address"
                     }
-                }
+                },
+                {
+                    "Name": "MileageException",
+                    "DisplayName": "Mileage Exception",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "bool"
+                    }
+                },
+                {
+                    "Name": "OffSiteVehicleException",
+                    "DisplayName": "Off-Site Vehicle Exception",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "bool"
+                    }
+                },
+                {
+                    "Name": "Amount",
+                    "DisplayName": "Amount",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "int"
+                    }
                 
+                },
+                {
+                    "Name": "ConfirmedSalesException",
+                    "DisplayName": "Confirmed Sales Exception",
+                    "Description" : "",
+                    "Type": {
+                        "Name" : "bool"
+                    }
+                }
             ],
             "Constructor": {
                 "Parameters": [
@@ -506,6 +570,14 @@
                             "Description": "",
                             "Type": {
                                 "Name": "string"
+                            }
+                        },
+                        {
+                            "Name": "warrentyActivated",
+                            "DisplayName": "Warrenty Activated",
+                            "Description": "",
+                            "Type": {
+                                "Name": "int"
                             }
                         }
                     ]
@@ -563,8 +635,8 @@
                     "Style": "Success",
                     "Transitions": [
                         {
-                            "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "Lender" ],
+                            "AllowedRoles": [ "Lender" ],
+                            "AllowedInstanceRoles": [  ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "createInventory",
                             "NextStates": [ "InInventory" ],
@@ -588,8 +660,8 @@
                             "DisplayName": "sold"
                         },
                         {
-                            "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "Lender" ],
+                            "AllowedRoles": ["Lender" ],
+                            "AllowedInstanceRoles": [  ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "checkInInventory",
                             "NextStates": [ "CheckInInventory" ],
@@ -613,8 +685,8 @@
                             "DisplayName": "sold"
                         },
                         {
-                            "AllowedRoles": [ ],
-                            "AllowedInstanceRoles": [ "Lender" ],
+                            "AllowedRoles": [ "Lender" ],
+                            "AllowedInstanceRoles": [ ],
                             "Description": "Modify attributes of this contract.",
                             "Function": "checkInInventory",
                             "NextStates": [ "CheckInInventory" ],
@@ -685,7 +757,7 @@
             ]
         },
         {
-            "Name": "VehicleInInventoryStateContract8",
+            "Name": "VehicleInInventoryStateContract14",
             "DisplayName": "Vehicle Inventory State",
             "Description": "",
             "Initiators": [  ],

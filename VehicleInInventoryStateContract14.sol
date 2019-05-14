@@ -1,7 +1,7 @@
 pragma solidity ^0.4.25;
 
 
-contract VehicleInInventoryStateContract8 {
+contract VehicleInInventoryStateContract14 {
     
     address public Dealer;
     uint public Mileage;

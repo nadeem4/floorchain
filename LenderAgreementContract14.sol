@@ -1,11 +1,11 @@
 pragma solidity ^0.4.25;
 
-import './VehicleStateContract8.sol';
-import './VehicleInInventoryStateContract8.sol';
+import './VehicleStateContract14.sol';
+import './VehicleInInventoryStateContract14.sol';
 
-contract LenderAgreementContract8 {
+contract LenderAgreementContract14 {
 
-    VehicleStateContract8 vehicleStateContract;
+    VehicleStateContract14 vehicleStateContract;
     uint public DaysToPay;
     uint public GeographicalLimitConstraint;
     uint public MaxMoney;
@@ -18,6 +18,7 @@ contract LenderAgreementContract8 {
     address public Lender;
 
     uint public VehicleAttachedCount = 0;
+    uint public VehicleTotalCost = 0;
 
 
     enum StateType {
@@ -27,6 +28,7 @@ contract LenderAgreementContract8 {
         Closed,
         Renewed
     }
+    
     StateType public State;
 
     modifier onlyLender(){
@@ -51,8 +53,9 @@ contract LenderAgreementContract8 {
     function uploadInvoice( string invoiceNumber, uint invoiceDate, string desccription, uint amount, string vin, string oemName,  string dealerNumber, address dealer ) 
         public onlyLender{
             require(State != StateType.Closed, 'Agreement is expired, please renew it or create new');
-            vehicleStateContract = new VehicleStateContract8();
+            vehicleStateContract = new VehicleStateContract14();
             VehicleAttachedCount ++ ;
+            VehicleTotalCost += amount;
             vehicleStateContract.setInvoiceDetails(invoiceNumber, invoiceDate, desccription, amount );
             vehicleStateContract.setRoles(Lender, dealer);
             vehicleStateContract.setDealerInfo(dealerNumber);
